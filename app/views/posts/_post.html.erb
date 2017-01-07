@@ -1,0 +1,16 @@
+<% @posts.each do |post| %>
+<div class="col-lg-3">
+  <div style="border: 1px solid #b8b8b8;border-radius: 6px;padding: 15px;margin-bottom: 50px;display: block;">
+    <p><%= link_to post.title, post_path(post) %></p>
+      <p>
+        <small>
+        	<time><%= post.created_at.strftime("%H:%M, %d.%m.%Y") %></time><br> 
+        	<%= link_to 'Изменить', edit_post_path(post) %> | 
+      		<%= link_to 'Удалить', post_path(post),
+              method: :delete,
+              data: { confirm: 'Вы уверены?' } %>
+        </small>
+    </p>
+  </div>
+</div>
+  <% end %>

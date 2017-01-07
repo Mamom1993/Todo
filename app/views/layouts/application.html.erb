@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<div class="container" style="padding-top:30px;padding-bottom:50px;">
+  		<div class="row">
+			<div class="col-lg-12" style="padding-bottom:70px;">
+				<h1>Задачи</h1>
+				<nav class="navbar-default">
+				    <div class="navbar-header">
+				    	<a class="nav-link" href="/" style="padding-right:20px;">Все задачи</a>
+				      <%= link_to 'Новая задача', new_post_path, class: 'nav-link' %>
+				    </div>
+				</nav>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<% flash.each do |name, message| %>
+					<div class="alert alert-<%= name %>">
+						<%= message %>
+					</div>
+				<% end %>
+			</div>
+		    <div class="col-lg-12">
+		    	<%= yield %>
+			</div>
+		</div>
+	</div>
+
+
+  </body>
+</html>
