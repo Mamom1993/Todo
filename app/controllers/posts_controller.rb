@@ -10,14 +10,14 @@ class PostsController < ApplicationController
   	end
 
 	def new
-		@post = Post.new
+		@post = current_user.posts.build
 	end
 
 	def edit
 	end
 
 	def create
-		@post = Post.new(post_params)
+		@post = current_user.posts.new(post_params)
 
 		if @post.save
 		redirect_to @post, success: 'Задача создана'
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 	end
 
 	def update
-		if @post.update(todo_params)
+		if @post.update(post_params)
 		redirect_to @post, success: 'Задача обновлена'
 		else
 		render 'edit', danger: 'Задача не обновлена'	
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
 	end
 
   	def post_params
-    	params.require(:post).permit(:title, :body)
+    	params.require(:post).permit(:title, :body, :email, :user_id)
   	end
 
 end

@@ -8,7 +8,7 @@
  
 <p>
   <%= @post.body %><br>
-  <small>        	
+  <small><%= @post.user.try(:email) %>
   	<time><%= @post.created_at.strftime("%H:%M, %d.%m.%Y") %></time> | 
 	<%= link_to 'Изменить', edit_post_path(@post) %> |
 	<%= link_to 'Удалить', post_path(@post),
